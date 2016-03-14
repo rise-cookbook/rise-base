@@ -20,7 +20,7 @@ describe 'rise-base::default' do
   end
 
   describe file('/etc/motd') do
-  	its(:content) { should contain 
+  	its(:content) { should == 
 						[
 						 "  .--,--.",
 						 "  `.  ,.'   Chef Managed Server",
@@ -31,4 +31,5 @@ describe 'rise-base::default' do
 						 ].join("\n")
 					}
    end
+   
 end
