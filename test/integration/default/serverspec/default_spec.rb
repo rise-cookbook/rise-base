@@ -31,5 +31,4 @@ describe 'rise-base::default' do
 						 ].join("\n")
 					}
    end
-   
 end

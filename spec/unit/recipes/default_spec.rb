@@ -43,7 +43,7 @@ describe 'rise-base::default' do
   	end
 
   	it 'should create /etc/motd file' do
-  		expect(chef_run).to create_file('/etc/motd')
+  		expect(chef_run).to create_cookbook_file('/etc/motd')
   	end
 
   	it 'should populate /etc/resolv.conf' do
