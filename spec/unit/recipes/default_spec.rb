@@ -26,22 +26,26 @@ describe 'rise-base::default' do
   		runner.converge(described_recipe)
   	end
 
-  	it 'should install epel-release' do
-  		expect(chef_run).to install_package('epel-release')
-  	end
+    it 'should install epel-release wget ntp and ntpdate' do
+      expect(chef_run).to install_package(%w(epel-release wget ntp ntpdate))
+    end  
 
-  	it 'should install wget' do
-  		expect(chef_run).to install_package('wget')
-  	end
-
-  	it 'should install ntp' do
-  		expect(chef_run).to install_package('ntp')
-  	end
-
-  	it 'should install ntpdate' do
-  		expect(chef_run).to install_package('ntpdate')
-  	end
-
+  #	it 'should install epel-release' do
+  #		expect(chef_run).to install_package('epel-release')
+  #	end
+#
+ # 	it 'should install wget' do
+  #		expect(chef_run).to install_package('wget')
+  #	end
+#
+ # 	it 'should install ntp' do
+  #		expect(chef_run).to install_package('ntp')
+  #	end
+#
+ # 	it 'should install ntpdate' do
+  #		expect(chef_run).to install_package('ntpdate')
+  #	end
+#
   	it 'should create /etc/motd file' do
   		expect(chef_run).to create_cookbook_file('/etc/motd')
   	end
