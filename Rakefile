@@ -1,7 +1,9 @@
 require 'rake'
 require 'rspec/core/rake_task'
-require 'rubygems'
-gem 'ci_reporter'
+require 'ci/reporter/rake/rspec'
+
+ENV['GENERATE_REPORTS'] = 'true'
+ENV['CI_REPORTS'] = 'spec/reports/'
 
 Rake.application.options.trace_rules = true
 
@@ -10,4 +12,11 @@ t.pattern = Dir.glob('spec/**/**/*_spec.rb')
 t.rspec_opts = '--format documentation'
 end
 
-task :default => :spec
+namespace :unit_test do
+	task :rspec => 'ci:setup:rspec'
+
+	task :chef => :spec
+end
+
+task :all => ['unit_test:rspec', 'unit_test:chef', ]
+task :default => :all
